@@ -2,9 +2,9 @@ TODO:
 modules:
 - instruction memory - DONE (Sam)
 - program counter - DONE (Sam)
-- ALU
+- ALU (Sam)
 - 2 to 1 MUX - DONE (Alexa)
-- register file
+- register file (Sam)
 - sign extend - DONE (Alexa)
-- data memory
+- data memory (Alexa)
 - control unit (splits instructions and returns codes)

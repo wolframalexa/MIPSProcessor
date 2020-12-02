@@ -5,6 +5,6 @@ modules:
 - ALU
 - 2 to 1 MUX - DONE (Alexa)
 - register file
-- sign extend
+- sign extend - DONE (Alexa)
 - data memory
 - control unit (splits instructions and returns codes)

@@ -6,5 +6,16 @@ modules:
 - 2 to 1 MUX - DONE (Alexa)
 - register file (Sam)
 - sign extend - DONE (Alexa)
-- data memory (Alexa)
+- data memory - DONE (Alexa)
 - control unit (splits instructions and returns codes)
+
+presentation:
+- MIPS vs ARM
+	- architecture
+	- functional blocks
+	- performance
+	- applications
+- our processor
+
+report:
+- write up above

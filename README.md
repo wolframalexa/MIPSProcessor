@@ -8,14 +8,14 @@ Useful links:
 
 [MIPS instruction set with verilog translation](https://inst.eecs.berkeley.edu/~cs61c/resources/MIPS_Green_Sheet.pdf)
 
-### Assignment:
+# Assignment:
 
-# Part 1
+### Part 1
 
 Provide an overview of MIPS and ARM based processors. Discuss: architectural fundamentals and
 functional blocks, performance, and applications.
 
-# Part 2
+### Part 2
 
 Design a 32-bit MIPS processor implementing at least the following functional blocks: Program Counter,
 Instruction memory, Control, Registers, ALU, and data memory. Based on the implemented functional
@@ -32,6 +32,6 @@ d. Attempt to increase throughput by the inclusion of pipelining
 
 You may choose to design an ARM processor instead.
 
-# Part 3
+### Part 3
 
 Be prepared to give an in-class 10-15 min presentation discussing the above parts including a demo.

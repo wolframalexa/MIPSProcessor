@@ -56,6 +56,18 @@ module mux2 #(parameter WIDTH=8)
         else y <= d0;
 endmodule
 
+module data_mem(input clk, WE,
+            input [31:0] WD, A,
+            output [31:0] RD);
+    reg [31:0] RAM[63:0];
+    
+    assign RD = RAM[A[31:2]]; // word aligned
+    
+    always @ (posedge clk)
+        if (WE) RAM[A[31:2]] <= WD;
+endmodule 
+             
+
 
 
 module main(

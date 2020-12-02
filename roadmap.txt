@@ -3,7 +3,7 @@ modules:
 - instruction memory - DONE (Sam)
 - program counter - DONE (Sam)
 - ALU
-- 2 to 1 MUX
+- 2 to 1 MUX - DONE (Alexa)
 - register file
 - sign extend
 - data memory

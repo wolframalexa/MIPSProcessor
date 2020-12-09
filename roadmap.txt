@@ -7,10 +7,13 @@ modules:
 - register file (Sam)
 - sign extend - DONE (Alexa)
 - data memory - DONE (Alexa)
-- control unit (splits instructions and returns codes)
+- control unit (splits instructions and returns codes) - Sam
+- datapath - Sam
+
+- testbenches for whole thing and individual modules (Alexa)
 
 presentation:
-- MIPS vs ARM
+- MIPS vs ARM (DONE)
 	- architecture
 	- functional blocks
 	- performance

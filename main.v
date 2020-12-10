@@ -92,14 +92,7 @@ module maindec(
         
 endmodule
 
-<<<<<<< HEAD
-module main(input clk, reset,
-	    output [31:0] pc,
-	    input [31:0] instr,
-
-=======
 module main(
     
->>>>>>> c3224b50629525e51841ee647197151ddea7c32a
     );
 endmodule

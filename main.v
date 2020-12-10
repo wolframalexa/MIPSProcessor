@@ -2,7 +2,7 @@
 `define OPCODEADD 00010
 
 module pc(input rst, input clk, input[31:0] next_instr, output reg[31:0] cur_instr);
-//simple program counter without jumps (just a 32 bit reg that increments and resets)
+// simple program counter without jumps (just a 32 bit reg that increments and resets)
     always @(posedge clk, posedge rst) begin
         if (rst) begin
             cur_instr <= 0;
@@ -70,7 +70,9 @@ endmodule
 
 
 
-module main(
+module main(input clk, reset,
+	    output [31:0] pc,
+	    input [31:0] instr,
 
     );
 endmodule

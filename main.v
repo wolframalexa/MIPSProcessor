@@ -84,13 +84,28 @@ module regfile(
 endmodule
 
 module maindec(
-        input opcode,
+        input [5:0] opcode,
         output [2:0] ALUcontrol,
         output [1:0] ALUop,
         output branch, mem_write, mem2reg, ALUsrc, reg_dst, reg_write, jump
         );
-        
+    
+    reg [8:0] controls;
+    assign {reg_write, reg_dst, ALUsrc, branch, mem_write, mem2reg, ALUop} = controls;
+            
+    always @(*) begin
+        case (opcode)
+            000000: controls <= 9'b110000100; //R-type
+            100011: controls <= 9'b101001000; //lw
+            101011: controls <= 9'b0x101x000; //sw
+            000100: controls <= 9'b0x010x010; //beq
+            000100: controls <= 9'b101000000; //addi
+            000010: controls <= 9'b0xxx0xxx1; //J-type
+            default: controls <= 9'bxxxxxxxxx;
+        endcase
+    end
 endmodule
+
 
 module main(
     

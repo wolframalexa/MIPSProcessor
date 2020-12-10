@@ -57,10 +57,8 @@ endmodule
 module mux2 #(parameter WIDTH=8)
         (input [WIDTH-1:0] d0, d1,
          input s,
-         output reg [WIDTH-1:0] y);
-    always
-        if (s) y <= d1;
-        else y <= d0;
+         output [WIDTH-1:0] y);
+    assign y = s ? d1 : d0;
 endmodule
 
 module data_mem(input clk, WE,
@@ -193,7 +191,7 @@ module datapath (input clk, reset,
 
 endmodule
 
-module main(input       clk, reset,
+module mips(input       clk, reset,
             output [31:0]   pc,
             input [31:0]    instr,
             output          memwrite,
@@ -210,4 +208,38 @@ module main(input       clk, reset,
                  
     datapath dp(clk, reset, memtoreg, pcsrc, alusrc, regdst, regwrite, jump,
                  alucontrol, zero, pc, instr, aluout, writedata, readdata);
+endmodule
+
+module dmem (input clk, we,
+            input [31:0] a, wd,
+            output [31:0] rd);
+    reg [31:0] RAM[63:0];
+    assign rd = RAM[a[31:2]]; // word aligned
+
+    always @ (posedge clk)
+    if (we)
+        RAM[a[31:2]] <= wd;
+endmodule
+
+module imem (input [5:0] a,
+             output [31:0] rd);
+    reg [31:0] RAM[63:0];
+    initial
+        begin
+            $readmemh ("memfile.dat",RAM);
+        end
+    assign rd = RAM[a]; // word aligned
+endmodule
+
+module top (input clk, reset,
+            output [31:0] writedata, dataadr,
+            output memwrite);
+    wire [31:0] pc, instr, readdata;
+   
+    // instantiate processor and memories
+    mips mips (clk, reset, pc, instr, memwrite, dataadr,
+            writedata, readdata);
+    imem imem (pc[7:2], instr);
+    dmem dmem (clk, memwrite, dataadr, writedata,
+            readdata);
 endmodule

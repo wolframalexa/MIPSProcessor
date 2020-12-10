@@ -95,12 +95,12 @@ module maindec(
             
     always @(*) begin
         case (opcode)
-            000000: controls <= 9'b110000100; //R-type
-            100011: controls <= 9'b101001000; //lw
-            101011: controls <= 9'b0x101x000; //sw
-            000100: controls <= 9'b0x010x010; //beq
-            000100: controls <= 9'b101000000; //addi
-            000010: controls <= 9'b0xxx0xxx1; //J-type
+            6'b000000: controls <= 9'b110000100; //R-type
+            6'b100011: controls <= 9'b101001000; //lw
+            6'b101011: controls <= 9'b0x101x000; //sw
+            6'b000100: controls <= 9'b0x010x010; //beq
+            6'b000100: controls <= 9'b101000000; //addi
+            6'b000010: controls <= 9'b0xxx0xxx1; //J-type
             default: controls <= 9'bxxxxxxxxx;
         endcase
     end

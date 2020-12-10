@@ -68,9 +68,31 @@ module data_mem(input clk, WE,
 endmodule 
              
 
+module regfile(
+            input clk,
+            input WE3,
+            input [4:0] RA1,RA2,WA3,
+            input [31:0] WD3,
+            output [31:0] RD1, RD2); 
+    reg [31:0] RF[31:0];
+    
+    always @(posedge clk)
+        if (WE3) RF[WA3] <= WD3;
+    
+    assign RD1 = RF[RA1];
+    assign RD2 = RF[RA2]; 
+endmodule
 
+module maindec(
+        input opcode,
+        output [2:0] ALUcontrol,
+        output [1:0] ALUop,
+        output branch, mem_write, mem2reg, ALUsrc, reg_dst, reg_write, jump
+        );
+        
+endmodule
 
 module main(
-
+    
     );
 endmodule

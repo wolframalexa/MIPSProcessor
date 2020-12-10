@@ -4,7 +4,7 @@ modules:
 - program counter - DONE (Sam)
 - ALU (Sam)
 - 2 to 1 MUX - DONE (Alexa)
-- register file (Sam)
+- register file - DONE (Sam)
 - sign extend - DONE (Alexa)
 - data memory - DONE (Alexa)
 - control unit (splits instructions and returns codes) - Sam

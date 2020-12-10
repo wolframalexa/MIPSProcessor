@@ -16,14 +16,15 @@ module pc(input rst, input clk, input[31:0] next_instr, output reg[31:0] cur_ins
 endmodule
 
 module instr_mem 
-        #(parameter program_depth=9)
         (input[31:0] addr, output reg[31:0] read_data);
-    reg [31:0] mem32X32 [0:program_depth];
     
-    always @(addr) read_data <= mem32X32[addr];
+    reg [31:0] mem32x32 [31:0];
+    
+    always @(addr) read_data <= mem32x32[addr];
    
     initial begin
-        $readmemh("program.txt",mem32X32);
+        $display("-------LOADING PROGRAM--------");
+        $readmemh("source.mem",mem32x32);
     end
 endmodule
 

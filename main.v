@@ -151,8 +151,8 @@ module controller(input [5:0] op, funct,
     wire [1:0] aluop;
     wire       branch;
 
-    maindec md(op, memtoreg, memwrite, branch, alusrc,
-           regdst, regwrite, jump, aluop);                    
+    maindec md(op, alucontrol, aluop, branch, memwrite, memtoreg,
+           alusrc, regdst, regwrite, jump);                    
     aludec ad(funct, aluop, alucontrol);
 
     assign pcsrc = branch && zero;
@@ -232,8 +232,7 @@ module mips(input       clk, reset,
     wire [2:0]  alucontrol;
     
     controller c(instr[31:26], instr[5:0], zero, memtoreg, memwrite,
-                 memwrite, pcsrc, alusrc, regdst, regwrite, jump,
-                 alucontrol);
+                 pcsrc, alusrc, regdst, regwrite, jump, alucontrol);
                  
     datapath dp(clk, reset, memtoreg, pcsrc, alusrc, regdst, regwrite, jump,
                  alucontrol, zero, pc, instr, aluout, writedata, readdata);

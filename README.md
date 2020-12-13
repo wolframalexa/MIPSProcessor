@@ -8,6 +8,8 @@ Useful links:
 
 [MIPS instruction set with verilog translation](https://inst.eecs.berkeley.edu/~cs61c/resources/MIPS_Green_Sheet.pdf)
 
+https://www.eecs.harvard.edu/~cs161/notes/mips-part-I.pdf
+
 # Assignment:
 
 ### Part 1

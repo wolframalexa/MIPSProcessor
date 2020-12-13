@@ -117,8 +117,7 @@ module regfile(
 endmodule
 
 module maindec(
-        input opcode,
-        output [2:0] ALUcontrol,
+        input [5:0] opcode,
         output [1:0] ALUop,
         output branch, mem_write, mem2reg, ALUsrc, reg_dst, reg_write, jump);
         
@@ -151,7 +150,7 @@ module controller(input [5:0] op, funct,
     wire [1:0] aluop;
     wire       branch;
 
-    maindec md(op, alucontrol, aluop, branch, memwrite, memtoreg,
+    maindec md(op, aluop, branch, memwrite, memtoreg,
            alusrc, regdst, regwrite, jump);                    
     aludec ad(funct, aluop, alucontrol);
 

@@ -104,17 +104,24 @@ endmodule
 module regfile(
             input clk,
             input WE3,
-            input [4:0] RA1,RA2,WA3,
+            input [4:0] RA1, RA2, WA3,
             input [31:0] WD3,
-            output [31:0] RD1, RD2); 
+            output [31:0] RD1, RD2);
+             
     reg [31:0] RF[31:0];
+    
+    // three ported register file
+    // read two ports combinationally
+    // write third port on rising edge of clock
+    // register 0 hardwired to 0
     
     always @(posedge clk)
         if (WE3) RF[WA3] <= WD3;
     
-    assign RD1 = RF[RA1];
-    assign RD2 = RF[RA2]; 
+    assign RD1 = (RA1 != 0) ? RF[RA1] : 0;
+    assign RD2 = (RA2 != 0) ? RF[RA2] : 0; 
 endmodule
+
 
 module maindec(
         input [5:0] opcode,

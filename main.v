@@ -121,21 +121,21 @@ module maindec(
         output [1:0] ALUop,
         output branch, mem_write, mem2reg, ALUsrc, reg_dst, reg_write, jump);
         
-           reg [8:0] controls;                                                                                             
-           assign {reg_write, reg_dst, ALUsrc, branch, mem_write, mem2reg, ALUop} = controls;                                                                                                                                              
+    reg [8:0] controls;                                                                                             
+        
+    assign {reg_write, reg_dst, ALUsrc, branch,
+           mem_write, mem2reg, jump, ALUop} = controls;                                                                                                                                              
      
-    always @(*) begin                                                                                                   
-           
+    always @(*)
            case (opcode)                                                                                                       
-            6'b000000: controls <= 9'b110000100; //R-type                                                                   
+            6'b000000: controls <= 9'b110000010; //R-type                                                                 
             6'b100011: controls <= 9'b101001000; //lw                                                                       
-            6'b101011: controls <= 9'b0x101x000; //sw                                                                       
-            6'b000100: controls <= 9'b0x010x010; //beq                                                                      
-            6'b000100: controls <= 9'b101000000; //addi
-            6'b000010: controls <= 9'b0xxx0xxx1; //J-type
+            6'b101011: controls <= 9'b001010000; //sw                                                                     
+            6'b000100: controls <= 9'b000100001; //beq                                                                      
+            6'b001000: controls <= 9'b101000000; //addi
+            6'b000010: controls <= 9'b000000100; //J-type
             default: controls <= 9'bxxxxxxxxx;                                                                          
-           endcase                                                                                                     
-    end 
+           endcase
        
 endmodule
 
@@ -221,7 +221,7 @@ endmodule
 
 module mips(input       clk, reset,
             output [31:0]   pc,
-            input [31:0]    instr,
+            input  [31:0]   instr,
             output          memwrite,
             output [31:0]   aluout, writedata,
             input [31:0]    readdata);

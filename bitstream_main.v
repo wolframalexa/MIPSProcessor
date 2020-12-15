@@ -264,28 +264,27 @@ module imem (input [5:0] a,
 endmodule
 
 module top (input clk, reset,
-            output [31:0] writedata, dataadr,
             output memwrite);
     
-//    wire [31:0] writedata;
-//    wire [31:0] dataadr;
+    wire [31:0] writedata;
+    wire [31:0] dataadr;
             
     reg div_clk = 0;
     reg [27:0] count_reg = 0;
     
     // controls clock frequency - default is 100MHz, below 1 Hz
-    // comment out this block when performing the simulation - wrong timescale
-    //always @(posedge clk) 
-//    begin
-//        if (count_reg < 50000000) begin
-//            count_reg <= count_reg + 1;
-//        end
-//        else 
-//        begin
-//            count_reg <= 0;
-//            div_clk <= ~div_clk;
-//        end
-//    end 
+    
+    always @(posedge clk) 
+    begin
+        if (count_reg < 50000000) begin
+            count_reg <= count_reg + 1;
+        end
+        else 
+        begin
+            count_reg <= 0;
+            div_clk <= ~div_clk;
+        end
+    end 
             
     wire [31:0] pc, instr, readdata;
    
